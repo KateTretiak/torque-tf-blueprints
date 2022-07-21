@@ -25,4 +25,4 @@ grains:
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: qualidev2-katet-eks
+        compute-service: docker-agent
