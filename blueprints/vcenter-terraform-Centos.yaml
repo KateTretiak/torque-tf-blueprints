@@ -6,7 +6,7 @@ inputs:
   network_name:
     display-style: normal
     type: string
-    default: Local
+    default: "Local"
     description: there is no sanctuary
 
 grains:
@@ -16,9 +16,9 @@ grains:
       inputs:
         - virtual_machine_template_name: centos
         - network_name0: '{{ .inputs.network_name }}'
-        - network_name1: Local
-        - network_name2: Local
-        - network_name3: Local
+        - network_name1: "Local"
+        - network_name2: "Local"
+        - network_name3: "Local"
 
       source:
         store: torque-tf-blueprints

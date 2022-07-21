@@ -6,27 +6,27 @@ inputs:
   virtual_machine_template_name:
     display-style: normal
     type: string
-    default: centos
+    default: "centos"
     description: there is no sanctuary
   network_name0:
     display-style: normal
     type: string
-    default: Local
+    default: "Local"
     description: there is no sanctuary
   network_name1:
     display-style: normal
-    default: Local
+    default: "Local"
     type: string
     description: there is no sanctuary
   network_name2:
     display-style: normal
-    default: Local
+    default: "Local"
     type: string
     description: there is no sanctuary
   network_name3:
     display-style: normal
     type: string
-    default: Local
+    default: "Local"
     description: there is no sanctuary
   wait_for_ip:
     type: number
