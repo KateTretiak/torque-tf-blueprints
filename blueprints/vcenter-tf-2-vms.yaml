@@ -37,7 +37,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: docker-agent
   vm1:
     depends-on: VLAN
     kind: terraform
@@ -60,7 +60,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: docker-agent
 
   vm2:
     depends-on: VLAN
@@ -80,4 +80,4 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: docker-agent

@@ -54,7 +54,7 @@ grains:
         path: github.com/QualiNext/terraform/vm-from-template
       host:
         cloud-account: private-cloud
-        compute-service: vcenter
+        compute-service: docker-agent
 
   vm2:
 #    depends-on: vm1
@@ -72,4 +72,4 @@ grains:
         path: github.com/QualiNext/terraform/vm-from-template2
       host:
         cloud-account: private-cloud
-        compute-service: VCENTER2
+        compute-service: docker-agent
