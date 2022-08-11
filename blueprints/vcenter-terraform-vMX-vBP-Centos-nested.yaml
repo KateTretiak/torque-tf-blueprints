@@ -5,8 +5,8 @@ description: test blueprint for deploying VMs on vcenter
 inputs:
   vlan_id:
     display-style: normal
-    type: number
-    default: 280
+    type: string
+    default: '280'
     description: there is no sanctuary
   host_name:
     display-style: normal
