@@ -74,5 +74,10 @@ resource "vsphere_virtual_machine" "vm" {
       eagerly_scrub    = false
     }
   }
+  vapp {
+    properties = {
+      "guestinfo.hostname"     = "quali-test-centos",
+    }
+  }
 }
 

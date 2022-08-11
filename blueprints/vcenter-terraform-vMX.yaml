@@ -1,31 +1,21 @@
 spec_version: 2-preview
 
-description: test blueprint for deploying VMs on vcenter
+description: test blueprint for deploying vMX on vCenter
 
 inputs:
   host_name:
     display-style: normal
     type: string
     description: there is no sanctuary
-  network_name0:
+  mgmt_network:
     display-style: normal
     type: string
     default: Local
     description: there is no sanctuary
-  network_name1:
+  interface_networks:
     display-style: normal
     default: Local
     type: string
-    description: there is no sanctuary
-  network_name2:
-    display-style: normal
-    default: Local
-    type: string
-    description: there is no sanctuary
-  network_name3:
-    display-style: normal
-    type: string
-    default: Local
     description: there is no sanctuary
 
 grains:
@@ -36,7 +26,7 @@ grains:
         - datacenter_name: "Shells DataCenter"
         - vlan_id: 281
         - host_name: '{{ .inputs.host_name }}'
-        - port_group_name: "TorqueTestPG"
+        - port_group_name: "TorqueTestPG-{{ sandboxid }}-281"
         - virtual_switch_name: "vSwitch3"
 
       outputs:
@@ -54,12 +44,11 @@ grains:
     spec:
       inputs:
         - virtual_machine_template_name: "vMXcp_18.1R1.9"
-        - virtual_machine_name: "TorqueTestVM-{{ sandboxid }}"
+        - virtual_machine_name: "TorqueTestvMXcp-{{ sandboxid }}"
         - datacenter_name: "Shells DataCenter"
         - datastore_name: "Storage 2 (SSD, Raid 5)"
         - compute_cluster_name: "Shells Cluster 2"
-        - network_name0: "Vlan 105"
-        - network_name1: "{{.grains.vlan1.outputs.host_port_group_name}}"
+        - networks: "{{.inputs.mgmt_network}},{{.grains.vlan1.outputs.host_port_group_name}}"
         - wait_for_ip: -1
         - wait_for_net: -1
 
@@ -79,10 +68,7 @@ grains:
         - datacenter_name: "Shells DataCenter"
         - datastore_name: "Storage 2 (SSD, Raid 5)"
         - compute_cluster_name: "Shells Cluster 2"
-        - network_name0: "Vlan 105"
-        - network_name1: "{{.grains.vlan1.outputs.host_port_group_name}}"
-        - network_name2: "{{.inputs.network_name0}}"
-        - network_name3: "{{.inputs.network_name1}}"
+        - networks: "{{.inputs.mgmt_network}},{{.grains.vlan1.outputs.host_port_group_name}},{{.inputs.interface_networks}}"
         - wait_for_ip: -1
         - wait_for_net: -1
 
