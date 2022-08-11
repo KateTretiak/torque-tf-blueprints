@@ -6,7 +6,7 @@ inputs:
   vlan_id:
     display-style: normal
     type: string
-    default: '280'
+    default: 280
     description: there is no sanctuary
   host_name:
     display-style: normal
