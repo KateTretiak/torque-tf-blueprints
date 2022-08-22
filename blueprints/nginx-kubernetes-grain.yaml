@@ -4,6 +4,12 @@ spec_version: 2-preview
 description: Blueprint with nginx kubernetes grain.
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
+
+inputs:
   namespace:
     type: string
     display-style: normal
@@ -17,4 +23,4 @@ grains:
         path: github.com/QualiNext/test-spec2-public.git//manifests/nginx/nginxmanifest.yaml
       namespace: '{{ .inputs.namespace }}'
       host:
-        name: eks
+        name: "{{ .inputs.compute_service }}"

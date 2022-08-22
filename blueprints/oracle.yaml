@@ -4,6 +4,10 @@ description: Oracle compute instance
 
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
   compartment:
     type: string
     display-style: normal
@@ -37,7 +41,7 @@ grains:
         path: github.com/QualiNext/test-spec2-public.git//terraform/oci-instance
       host:
         cloud-account: private-cloud
-        compute-service: oke
+        compute-service: "{{ .inputs.compute_service }}"
       inputs:
         - compartment_ocid : '{{.inputs.compartment}}'
         - tenancy_ocid : '{{.inputs.tenancy}}'

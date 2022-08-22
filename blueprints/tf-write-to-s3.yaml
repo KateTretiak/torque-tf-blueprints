@@ -11,7 +11,7 @@ inputs:
     default: this is a default content
     display-style: normal
   compute_service_name:
-    type: string
+    type: execution-host
     default: "eks"
     display-style: normal
 
@@ -27,7 +27,7 @@ grains:
         # store: autogen_repo_sandbox_3416a76b
         path: github.com/QualiNext/terraform/s3-write
       host:
-        cloud-account: aws
+        cloud-account: private-cloud
         # '{{.inputs.compute_service_name}}'
         compute-service: '{{.params.default_compute_service}}'
       tags:

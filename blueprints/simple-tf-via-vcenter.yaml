@@ -4,7 +4,7 @@ description: something
 
 inputs:
   compute_service_name:
-    type: string
+    type: execution-host
     default: "vcenter-mock"
     display-style: normal
   input1:

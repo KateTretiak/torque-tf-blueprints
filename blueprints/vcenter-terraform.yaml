@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   virtual_machine_template_name:
     display-style: normal
     type: string
@@ -18,4 +22,4 @@ grains:
         path: github.com/QualiNext/terraform/vm-from-template
       host:
         cloud-account: private-cloud
-        compute-service: vcenter
+        compute-service: "{{ .inputs.compute_service }}"

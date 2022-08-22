@@ -2,6 +2,12 @@ spec_version: 2-preview
 
 description: description text
 
+inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
+
 
 grains:
 
@@ -12,7 +18,7 @@ grains:
         path: bitnami/node
         store: charts
       host:
-        compute-service: dev
+        compute-service: "{{ .inputs.compute_service }}"
       commands:
         - dep up bitnami/node
 

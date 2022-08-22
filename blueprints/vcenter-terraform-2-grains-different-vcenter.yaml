@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   datacenter_name_VCENTER2:
     display-style: normal
     type: string
@@ -54,7 +58,7 @@ grains:
         path: github.com/QualiNext/terraform/vm-from-template
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
   vm2:
 #    depends-on: vm1
@@ -72,4 +76,4 @@ grains:
         path: github.com/QualiNext/terraform/vm-from-template2
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"

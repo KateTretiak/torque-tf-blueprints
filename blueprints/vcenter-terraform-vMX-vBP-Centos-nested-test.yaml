@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   host_name:
     display-style: normal
     type: string
@@ -28,7 +32,7 @@ grains:
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: "{{ .inputs.compute_service }}"
 
   vcenter-terraform-vm:
     depends-on: vcenter-terraform-vlan
@@ -43,4 +47,4 @@ grains:
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: "{{ .inputs.compute_service }}"

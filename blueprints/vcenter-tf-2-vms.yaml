@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   virtual_machine_template_name:
     display-style: normal
     type: string
@@ -37,7 +41,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
   vm1:
     depends-on: VLAN
     kind: terraform
@@ -60,7 +64,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
   vm2:
     depends-on: VLAN
@@ -80,4 +84,4 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"

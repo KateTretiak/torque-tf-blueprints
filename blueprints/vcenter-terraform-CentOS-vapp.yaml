@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying CentOS on vCenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   virtual_machine_template_name:
     display-style: normal
     type: string
@@ -31,4 +35,4 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-test-vapp
       host:
         cloud-account: private-cloud
-        compute-service: yakir-vcenter
+        compute-service: "{{ .inputs.compute_service }}"

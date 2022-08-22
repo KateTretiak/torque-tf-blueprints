@@ -4,6 +4,10 @@ description: "PoC aws s3 cfn blueprint"
 inputs:
    # The access_control property is case-sensitive and must be one of the following values:
    # Private, PublicRead, PublicReadWrite, AuthenticatedRead, LogDeliveryWrite, BucketOwnerRead, BucketOwnerFullControl, or AwsExecRead
+   compute_service:
+      display-style: normal
+      type: execution-host
+      description: compute service
    access_control:
        type: string
        display-style: normal

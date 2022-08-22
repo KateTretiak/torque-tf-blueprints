@@ -5,6 +5,10 @@ description: description text
 
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
   tf-service-account:
     type: string
     display-style: normal
@@ -30,8 +34,8 @@ grains:
             path: github.com/QualiNext/test-spec2-public.git//scripts/tomerv_user_script.sh
           arguments_line: "arg1"
       host:
-        cloud-account: aws
-        compute-service: eks
+        cloud-account: private-cloud
+        compute-service: "{{ .inputs.compute_service }}"
         service-account: '{{.inputs.tf-service-account}}'
       inputs:
         - SG_NAME: '{{.inputs.sg-name}}'

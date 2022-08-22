@@ -8,7 +8,7 @@ inputs:
     default: "aws"
     display-style: normal
   compute_service_name:
-    type: string
+    type: execution-host
     default: "eks"
     display-style: normal
 

@@ -5,6 +5,10 @@ description: description text
 
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
   input1:
     type: string
     display-style: normal
@@ -35,8 +39,8 @@ grains:
       source:
         path: github.com/QualiNext/test-spec2-public.git//terraform/simple-tf-module
       host:
-        cloud-account: aws
-        compute-service: eks-new
+        cloud-account: private-cloud
+        compute-service: "{{ .inputs.compute_service }}"
       inputs:
         - test_input1: env-input-{{.inputs.input1}}
         - test_input2: env-id-{{sandboxId}}

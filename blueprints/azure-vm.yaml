@@ -4,7 +4,7 @@ description: deploy azure vm
 
 inputs:
   compute_service_name:
-    type: string
+    type: execution-host
     default: "eks"
     display-style: normal
   vm_name:

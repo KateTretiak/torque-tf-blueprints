@@ -20,7 +20,7 @@ inputs:
     default: "aws"
     description: "cloud account name"
   compute:
-    type: string
+    type: execution-host
     display-style: normal
     default: "eks"
     description: "compute service name"

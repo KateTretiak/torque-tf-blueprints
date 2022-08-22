@@ -11,7 +11,7 @@ inputs:
     default: this is a default content
     display-style: normal
   compute_service_name:
-    type: string
+    type: execution-host
     default: "eks"
     display-style: normal
 
@@ -23,8 +23,8 @@ grains:
         # store: autogen_repo_sandbox_3416a76b
         path: github.com/QualiNext/terraform/s3-write
       host:
-        cloud-account: aws
-        compute-service: kubernetes
+        cloud-account: private-cloud
+        compute-service: '{{ inputs.compute_service_name }}'
       inputs:
         - BUCKET_NAME: '{{.inputs.bucket_name}}'
         - SANDBOX_ID: '{{sandboxId}}'

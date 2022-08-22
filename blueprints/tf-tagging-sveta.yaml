@@ -7,6 +7,7 @@ inputs:
   content:
     default: this is a default content
   compute_service_name:
+    type: execution-host
     default: "eks"
 
 grains:

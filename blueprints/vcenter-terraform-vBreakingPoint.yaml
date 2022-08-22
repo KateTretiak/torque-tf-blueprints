@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying vBreakinPoint on vCenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
   host_name:
     display-style: normal
     type: string
@@ -36,7 +40,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/create-host-port-group
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
   BPSChassis:
     depends-on: vlan1
@@ -57,7 +61,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
 
   BPSBlade:
@@ -79,4 +83,4 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/vm-from-template-wait-for-ip-no-creds
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"

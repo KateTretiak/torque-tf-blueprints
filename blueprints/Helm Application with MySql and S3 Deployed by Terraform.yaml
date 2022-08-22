@@ -1,6 +1,12 @@
 spec_version: 2-preview
 description: Robotshot microservices application deployed on K8S with Helm and RDS deployed with TF
 
+inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
+
 outputs:
   WebsiteUrl:
     value: 'robotshop-{{ sandboxid | downcase }}.testquali.click:8080'
@@ -13,8 +19,8 @@ grains:
       source:
         path: github.com/qualinext/test-spec2-public.git//terraform/rds
       host:
-        cloud-account: aws-demo
-        compute-service: eks-demo
+        cloud-account: private-cloud
+        compute-service: "{{ .inputs.compute_service }}"
       inputs:
         - sandbox_id: '{{ sandboxid | downcase }}'
         - size: small 
@@ -35,8 +41,8 @@ grains:
       source:
         path: github.com/qualinext/test-spec2-public.git//terraform/s3
       host:
-        cloud-account: aws-demo
-        compute-service: eks-demo
+        cloud-account: private-cloud
+        compute-service: "{{ .inputs.compute_service }}"
       inputs:
         - region: eu-west-1
         - acl: public-read
@@ -49,8 +55,8 @@ grains:
       source:
         path: https://github.com/qualinext/test-spec2-public.git//helm/robotshop
       host:
-        cloud-account: aws-demo
-        compute-service: eks-demo
+        cloud-account: private-cloud
+        compute-service: "{{ .inputs.compute_service }}"
       inputs:
         - hostname: 'robotshop-{{ sandboxid | downcase }}'
         - version: 0.4.3

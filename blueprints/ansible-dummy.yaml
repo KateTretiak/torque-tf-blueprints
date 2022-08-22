@@ -1,6 +1,12 @@
 spec_version: 2-preview
 description: ansible dummy
 
+inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: compute service
+
 # This bp requires 2 containers with ssh server to be runnings
 # ansible runner will try to connect to them to execute a playbook
 # on them
@@ -24,7 +30,7 @@ grains:
       source:
         path: https://github.com/QualiNext/test-spec2-public//ansible/test_playbook.yaml
       host:
-        name: docker-agent
+        name: "{{ .inputs.compute_service }}"
 
       inventory-file:
         all:
