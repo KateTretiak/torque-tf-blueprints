@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  compute_service:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   host_name:
     display-style: normal
     type: string
@@ -30,7 +34,7 @@ grains:
         path: github.com/QualiSystems/torque-tf-blueprints.git//terraform/create-host-port-group
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
   vcenter-terraform-Centos:
     depends-on: vlan1
@@ -38,13 +42,13 @@ grains:
     spec:
       inputs:
         - networks: "{{.inputs.mgmt_network}},{{.grains.vlan1.outputs.host_port_group_name}}"
-
+        - exec_host: "{{ .inputs.compute_service }}"
       source:
         store: torque-tf-blueprints
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
 
   vcenter-terraform-vMX:
     depends-on: vlan1
@@ -54,13 +58,12 @@ grains:
         - host_name: "{{ .inputs.host_name }}"
         - mgmt_network: "{{.inputs.mgmt_network}}"
         - interface_networks: "{{.grains.vlan1.outputs.host_port_group_name}}, {{.grains.vlan1.outputs.host_port_group_name}}"
-
       source:
         store: torque-tf-blueprints
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"
   
   vcenter-terraform-vBreakingPoint:
     depends-on: vlan1
@@ -70,10 +73,9 @@ grains:
         - host_name: "{{ .inputs.host_name }}"
         - mgmt_network: "{{.inputs.mgmt_network}}"
         - interface_networks: "{{.grains.vlan1.outputs.host_port_group_name}}, {{.grains.vlan1.outputs.host_port_group_name}}"
-
       source:
         store: torque-tf-blueprints
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.compute_service }}"

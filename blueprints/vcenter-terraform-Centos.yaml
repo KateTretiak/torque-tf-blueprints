@@ -3,6 +3,10 @@ spec_version: 2-preview
 description: test blueprint for deploying VMs on vcenter
 
 inputs:
+  exec_host:
+    display-style: normal
+    type: execution-host
+    description: there is no sanctuary
   networks:
     display-style: normal
     type: string
@@ -22,4 +26,4 @@ grains:
         path: blueprints
       host:
         cloud-account: private-cloud
-        compute-service: docker-agent
+        compute-service: "{{ .inputs.exec_host }}"
